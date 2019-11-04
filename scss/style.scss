@@ -25,9 +25,6 @@ $primary: #fcd307;
     transition:         all $transition ease;
 }
 
-html {
-	// overflow-x: hidden;
-}
 body {
 	font-family: $font-primary;
 	background: $white;
@@ -63,7 +60,7 @@ h1, h2, h3, h4, h5,
 }
 
 .ftco-navbar-light {
-	background: transparent!important;
+	background: $black !important;	
 	// position: absolute;
 	// right: 0;
 	// left: 0;
@@ -95,6 +92,9 @@ h1, h2, h3, h4, h5,
 				background: $black;
 			}
 		}
+		.logo-menu{
+			height: 10vh;
+		}
 		&.navbar-black{
 			color: $white;
 			@include media-breakpoint-down(md){
@@ -107,26 +107,26 @@ h1, h2, h3, h4, h5,
 	.navbar-nav {
 		@include media-breakpoint-down(md){
 			padding: 15px 0;
-		}
+			min-height: 10vh;			
+		}		
 		> .nav-item {
 			> .nav-link {
-				font-size: 16px;
-				padding-top: .8rem;
-				padding-bottom: .8rem;
-				padding-left: 20px;
-				padding-right: 20px;
-				color: lighten($black,30%);
+				padding-top: .9rem!important;
+				padding-bottom: .9rem!important;
+				font-size: calc(5px + 1.2vw);
+				
+				color: $white;
 				font-weight: 500;
 				position: relative;
 				z-index: 0;
 				@include media-breakpoint-up(lg){
 					&:after{
 						position: absolute;
-						bottom:18px;
+						bottom:10px;
 						left: 0;
 						right: 0;
-						width: 70%;
-						height: 6px;
+						width: 80%;
+						height: 5px;
 						content: '';
 						background: $primary;
 						margin: 0 auto;
@@ -142,8 +142,7 @@ h1, h2, h3, h4, h5,
 					padding-left: 0;
 					padding-right: 0;
 				}
-				&:hover {
-					color: $black;
+				&:hover {					
 					@include media-breakpoint-down(md){
 						color: $primary;
 					}
@@ -151,6 +150,7 @@ h1, h2, h3, h4, h5,
 						opacity: 1;
 					}
 				}
+				
 				opacity: 1!important;
 			}
 
@@ -166,7 +166,7 @@ h1, h2, h3, h4, h5,
 					font-size: 13px;
 					color: rgba(0,0,0,.7);
 					&:hover,&:focus{
-						color: $black;
+						color: $primary;
 						background: transparent;
 					}
 				}
@@ -221,7 +221,7 @@ h1, h2, h3, h4, h5,
 			}
 			&.active {
 				> a {
-					color: $black;
+					color: $white;
 					&:after{
 						opacity: 1;
 					}
@@ -230,28 +230,27 @@ h1, h2, h3, h4, h5,
 			@include media-breakpoint-down(md){
 				&.active{
 					> a{
-						color: $primary;
+						color: $primary !important;
 					}
 				}
 			}
 		}
 	}
 	.navbar-toggler {
+		
 		border: none;
-		color: rgba(255,255,255,.5)!important;
+		color: $white!important;
 		cursor: pointer;
 		padding-right: 15px;
 		text-transform: uppercase;
 		font-size: 16px;
 		letter-spacing: .1em;
-		padding: 0;
-		&:hover,&:focus{
-			outline: none !important;
-		}
+		padding: 0;				
 	}
 	
 	&.scrolled  {
-		position: fixed;
+		// position: fixed;
+		display:flex;		
 		right: 0;
 		left: 0;
 		top: 0;
@@ -259,19 +258,20 @@ h1, h2, h3, h4, h5,
 		background: $white!important;
 		box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
 		padding: 0;
+
+		@include media-breakpoint-down(md){
+			background: $black!important;
+			
+		}
+		
 		.nav-item {
 			.nav-link{
 				@include media-breakpoint-up(lg){
 					&:after{
 						bottom: 19px !important;
 					}
-				}
-			}
-			&.active {
-				> a {
-					color: $black!important;
-				}
-			}
+				}				
+			}			
 			&.cta {
 				> a {
 					color: $white !important;
@@ -301,7 +301,9 @@ h1, h2, h3, h4, h5,
 				background: none;
 				border-radius: 0px;
 				padding-left: 0rem!important;
-				padding-right: 0rem!important;
+				padding-right: 0rem!important;			
+					
+				
 			}
 		}
 
@@ -321,21 +323,54 @@ h1, h2, h3, h4, h5,
 			padding-right: 0;
 			text-transform: uppercase;
 			font-size: 16px;
-			letter-spacing: .1em;
+			letter-spacing: .1em;	
+
+			@include media-breakpoint-down(md){
+				
+				color: $white!important;
+				
+			}
+			
 		}
 		.nav-link {
 			padding-top: .9rem!important;
 			padding-bottom: .9rem!important;
+			
 			color: $black!important;
+			@include media-breakpoint-down(md){
+				background: $black!important;
+				color: $white !important;
+				font-size: 20px;
+				&.active {
+					color: $primary !important;
+				}
+				&:hover {				
+					
+					color: $primary !important;
+					
+					&:after{
+						opacity: 1;
+					}
+				}
+			}
 			&.active {
 				color: $primary!important;
 			}
+			&:hover {					
+				@include media-breakpoint-down(md){
+					color: $primary ;
+				}
+				&:after{
+					opacity: 1;
+				}
+			}
 		}
 		&.awake {
+			position: fixed;
 			margin-top: 0px;
-			transition: .3s all ease-out;
+			transition: .3s all ease-out;			
 		}
-		&.sleep {
+		&.sleep {			
 			transition: .3s all ease-out;	
 		}
 
@@ -366,9 +401,9 @@ h1, h2, h3, h4, h5,
 	height: 750px;
 	background: $black;
 	.forth{
-		width: 20%;
+		width: 30%;
 		height: 750px;
-		@include media-breakpoint-down(sm){
+		@include media-breakpoint-down(md){
 			width: 0%;
 		}
 		.bg-after{
@@ -378,19 +413,19 @@ h1, h2, h3, h4, h5,
 			@include media-breakpoint-up(lg){
 				&:after{
 					position: absolute;
-					top: -100%;
+					// top: -100%;
 					left: 0;
 					right: 0;
 					width: 100%;
 					height: 100%;
 					content: '';
-					background: $black;
+					
 				}
 			}
 		}
 		.text{
 			position: absolute;
-			top: 50%;
+			top: 40%;
 			left: 0;
 			right: 0;
 			// max-width: 1140px;
@@ -402,6 +437,10 @@ h1, h2, h3, h4, h5,
 			z-index: 1;
 			@include media-breakpoint-up(md){
 				padding-left: 3em;
+			}
+			@include media-breakpoint-down(md){
+				top: 60%;
+				left: 10%;
 			}
 			.desc{
 				width: 40%;
@@ -427,10 +466,10 @@ h1, h2, h3, h4, h5,
 				z-index: 0;
 				&:after{
 					position: absolute;
-					bottom: 0;
+					bottom: -5px;
 					left: 0;
 					right: 0;
-					height: 10px;
+					height: 5px;
 					width: 100%;
 					content: '';
 					background: $primary;
@@ -460,7 +499,7 @@ h1, h2, h3, h4, h5,
 				&:after{
 					position: absolute;
 					top: 0;
-					right: -40px;
+					right: -60px;
 					bottom: 0;
 					content: '';
 					width: 100%;
@@ -481,11 +520,11 @@ h1, h2, h3, h4, h5,
 		}
 	}
 	.third{
-		width: 80%;
+		width: 55%;
 		position: relative;
 		height: 750px;
 		@include media-breakpoint-down(sm){
-			width: 100%;
+			width: 90%;
 		}
 		.icon{
 			position: absolute;
@@ -545,7 +584,14 @@ h1, h2, h3, h4, h5,
 
 
 .video-hero{
-	height: 750px;
+	height: 750px; 
+	background-image: url(../images/nuxx-logo.png); 
+	background-size:contain; 
+	background-repeat: no-repeat;
+	background-position: center center;
+	@include media-breakpoint-down(md){
+		background-position: top right;	
+	}
 }
 
 
